@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L B Info Soluções em TI</title>
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            background-color: white; /* Cor de fundo branca */
+        }
+        header {
+            background-color: #005f7f; /* Azul escuro */
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav a {
+            color: white; /* Cor dos links no menu */
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline; /* Sublinha ao passar o mouse */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            color: #005f7f; /* Azul escuro */
+            font-weight: bold;
+        }
+        .plano {
+            background-color: #007f9f; /* Azul piscina */
+            color: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            border: 2px solid #ffffff; /* Bordas brancas */
+            transition: transform 0.2s; /* Efeito de transição ao passar o mouse */
+        }
+        .plano:hover {
+            background-color: #0099bb; /* Azul piscina claro */
+            transform: scale(1.05); /* Aumenta um pouco o tamanho do plano ao passar o mouse */
+        }
+        .valor {
+            background-color: #00b3b3; /* Verde piscina */
+            border-radius: 5px;
+            padding: 10px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            text-align: center;
+        }
+        .close-btn, .submit-btn {
+            background-color: #005f7f; /* Azul escuro */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .close-btn:hover, .submit-btn:hover {
+            background-color: #007f9f; /* Azul piscina */
+        }
+        .orcamento-btn {
+            background-color: #007f9f; /* Azul piscina */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .orcamento-btn:hover {
+            background-color: #0099bb; /* Azul piscina claro */
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #555;
+        }
+        .titulo-destaque {
+            background-color: #007f9f; /* Azul piscina */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .descricao-plano {
+            text-align: left; /* Alinha a descrição à esquerda */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>L B Info Soluções em TI</h1>
+        <p>Empresa especializada em manutenção de computadores e venda de software de automação comercial.</p>
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#planos">Planos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <section id="servicos">
+            <h2><strong>Serviços:</strong></h2>
+            <p><strong>Manutenção de computadores:</strong> Garantimos que seu computador funcione de forma eficiente, realizando manutenção preventiva e corretiva.</p>
+            <p><strong>Revenda de software de automação comercial:</strong> Oferecemos soluções que ajudam seu negócio a operar de forma mais eficiente e organizada.</p>
+            <p><strong>Montagem de PC gamer:</strong> Montamos computadores de alta performance sob medida para suas necessidades de jogos.</p>
+            <p><strong>Manutenção de notebooks:</strong> Cuidamos da saúde do seu notebook, desde limpeza interna até atualização de hardware.</p>
+            <p><strong>Suporte via acesso remoto:</strong> Resolvemos problemas rapidamente, conectando-nos ao seu dispositivo de forma segura.</p>
+            <p><strong>Clonagem, formatação e backup:</strong> Garantimos que seus dados estejam sempre seguros e disponíveis, independentemente da situação.</p>
+        </section>
+
+        <section id="planos">
+            <h2><strong>Planos:</strong></h2>
+            <div class="plano" onclick="abrirModal('standard')">
+                <h3>Plano Standard</h3>
+                <div class="descricao-plano">
+                    <p>• Gerenciamento de até 3 computadores<br>
+                       • Instalação<br>
+                       • Treinamento<br>
+                       • Suporte por acesso remoto<br>
+                       • Manutenção de computador mensal<br>
+                       • Formatação e backup<br>
+                    </p>
+                </div>
+                <span class="valor">R$ 289,99/mês</span>
+                <p><strong>Suporte, atualizações mensais e treinamento cortesia da compra do produto.</strong></p>
+            </div>
+            <div class="plano" onclick="abrirModal('essencial')">
+                <h3>Plano Essencial</h3>
+                <div class="descricao-plano">
+                    <p>• Gerenciamento de até 5 computadores<br>
+                       • Instalação<br>
+                       • Treinamento<br>
+                       • Suporte por acesso remoto<br>
+                       • Manutenção de computador mensal<br>
+                       • Envio mensal de arquivos para contabilidade<br>
+                       • Formatação e backup<br>
+                    </p>
+                </div>
+                <span class="valor">R$ 389,90/mês</span>
+                <p><strong>Suporte, atualizações mensais e treinamento cortesia da compra do produto.</strong></p>
+            </div>
+        </section>
+
+        <section id="contato">
+            <h2><strong>Contato:</strong></h2>
+            <p><strong>Entre em contato com um especialista:</strong></p>
+            <button class="orcamento-btn" onclick="abrirModal('orcamento')">Faça um orçamento</button>
+        </section>
+    </div>
+
+    <footer>
+        <p>Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modal para orçamento -->
+    <div id="orcamentoModal" class="modal">
+        <div class="modal-content">
+            <h3>Gostaria de iniciar uma conversa com um especialista?</h3>
+            <p>Insira seu nome para continuar:</p>
+            <input type="text" id="nomeCliente" placeholder="Seu nome">
+            <br>
+            <button class="submit-btn" onclick="enviarOrcamento()">Enviar para WhatsApp</button>
+            <button class="close-btn" onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Abrir modal ao clicar em um plano ou botão de orçamento
+        function abrirModal(tipo) {
+            document.getElementById('orcamentoModal').style.display = 'flex';
+        }
+
+        // Fechar modal
+        function fecharModal() {
+            document.getElementById('orcamentoModal').style.display = 'none';
+        }
+
+        // Enviar orçamento para o WhatsApp com o nome do cliente
+        function enviarOrcamento() {
+            var nome = document.getElementById('nomeCliente').value;
+            if (nome) {
+                var url = "https://wa.me/5522997599241?text=Olá,%20meu%20nome%20é%20" + encodeURIComponent(nome) + "%20e%20gostaria%20de%20fazer%20um%20orçamento.";
+                window.open(url, '_blank');
+                fecharModal();
+            } else {
+                alert("Por favor, insira seu nome.");
+            }
+        }
+    </script>
+</body>
+</html>
