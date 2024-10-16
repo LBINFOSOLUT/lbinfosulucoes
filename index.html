@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -54,6 +54,7 @@
             color: white;
             text-align: center;
             flex-direction: column; /* Alinha texto verticalmente */
+            padding-top: 100px; /* Espaçamento acima do título */
         }
 
         .hero h2 {
@@ -232,42 +233,41 @@
     </footer>
 
     <script>
-        // Função para mostrar seções
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('section, .hero');
-            sections.forEach(section => section.classList.remove('active'));
+            // Ocultar todas as seções
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostrar a seção selecionada
             document.getElementById(sectionId).classList.add('active');
         }
 
-        // Função para abrir a janela modal
-        function openModal(servicoOuPlano) {
-            document.getElementById('modalTitle').innerText = `Solicitação de Orçamento para ${servicoOuPlano}`;
-            document.getElementById('modalDescription').innerText = "Estamos prontos para ajudar com suas necessidades de " + servicoOuPlano + ". Por favor, forneça seu nome para entrarmos em contato.";
-            document.getElementById('modal').style.display = "block";
+        function openModal(servico) {
+            document.getElementById('modalTitle').textContent = servico;
+            document.getElementById('modalDescription').textContent = "Você selecionou o serviço: " + servico + ". Insira seu nome para contato:";
+            document.getElementById('modal').style.display = 'block';
         }
 
-        // Função para fechar a janela modal
         function closeModal() {
-            document.getElementById('modal').style.display = "none";
+            document.getElementById('modal').style.display = 'none';
         }
 
-        // Função para enviar mensagem via WhatsApp
         function enviarParaWhatsApp() {
             const nome = document.getElementById('nomeCliente').value;
-            const message = `Olá, meu nome é ${nome} e gostaria de saber mais sobre os serviços.`;
-            const phoneNumber = '+5522997599241'; // Seu número de WhatsApp
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            const mensagem = `Olá! Meu nome é ${nome}. Gostaria de mais informações.`;
+            const whatsappURL = `https://api.whatsapp.com/send?phone=22997599241&text=${encodeURIComponent(mensagem)}`;
+            window.open(whatsappURL, '_blank');
         }
 
-        // Função para enviar mensagem do modal via WhatsApp
         function sendWhatsAppFromModal() {
             const nome = document.getElementById('modalName').value;
-            const serviceName = document.getElementById('modalTitle').innerText.replace('Solicitação de Orçamento para ', '');
-            const message = `Olá, meu nome é ${nome} e estou interessado em ${serviceName}.`;
-            const phoneNumber = '+5522997599241'; // Seu número de WhatsApp
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            const servico = document.getElementById('modalTitle').textContent;
+            const mensagem = `Olá! Meu nome é ${nome}. Gostaria de mais informações sobre ${servico}.`;
+            const whatsappURL = `https://api.whatsapp.com/send?phone=22997599241&text=${encodeURIComponent(mensagem)}`;
+            window.open(whatsappURL, '_blank');
+            closeModal();
         }
     </script>
 </body>
