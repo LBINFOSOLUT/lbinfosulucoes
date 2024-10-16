@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -6,275 +6,269 @@
     <title>L B Info Soluções em TI</title>
     <style>
         body {
-            font-family: 'Playfair Display', serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: white; /* Cor de fundo branca */
+            background-color: #f4f4f4;
         }
+
         header {
-            background-color: #005f7f; /* Azul escuro */
+            background-color: #003366;
             color: white;
+            padding: 20px;
             text-align: center;
-            padding: 1rem;
         }
+
+        header h1 {
+            font-size: 2.5em; /* Tamanho aumentado do título */
+            font-family: 'Georgia', serif; /* Fonte mais profissional */
+            margin: 0; /* Remove margem padrão */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #00509e;
+        }
+
         nav a {
-            color: white; /* Cor dos links no menu */
+            color: white;
+            padding: 14px 20px;
             text-decoration: none;
-            margin: 0 15px;
+            text-align: center;
             font-weight: bold;
         }
+
         nav a:hover {
-            text-decoration: underline; /* Sublinha ao passar o mouse */
+            background-color: #0073e6;
         }
+
+        .hero {
+            background-image: url('https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_960_720.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* Preenche toda a altura da tela */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            flex-direction: column; /* Alinha texto verticalmente */
+        }
+
+        .hero h2 {
+            font-size: 2em; /* Tamanho do título centralizado */
+            margin: 0; /* Remove margem padrão */
+        }
+
+        .hero p {
+            font-size: 1.2em; /* Tamanho do subtítulo */
+            margin-top: 10px; /* Espaçamento acima do subtítulo */
+        }
+
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 20px;
         }
-        h2 {
-            color: #005f7f; /* Azul escuro */
-            font-weight: bold;
+
+        section {
+            display: none;
         }
-        .plano, .servico {
-            background-color: #007f9f; /* Azul piscina */
+
+        .active {
+            display: block;
+        }
+
+        .servico, .plano {
+            background-color: #0073e6;
             color: white;
-            margin: 20px;
+            margin: 20px 0;
             padding: 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            text-align: center;
-            border: 2px solid #ffffff; /* Bordas brancas */
-            transition: transform 0.2s; /* Efeito de transição ao passar o mouse */
-        }
-        .plano:hover, .servico:hover {
-            background-color: #0099bb; /* Azul piscina claro */
-            transform: scale(1.05); /* Aumenta um pouco o tamanho ao passar o mouse */
-        }
-        .valor {
-            background-color: #00b3b3; /* Verde piscina */
             border-radius: 5px;
-            padding: 10px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; 
-            text-align: center;
-        }
-        .close-btn, .submit-btn {
-            background-color: #005f7f; /* Azul escuro */
-            color: white;
-            border: none;
-            padding: 10px 20px;
             cursor: pointer;
-            margin: 10px;
-            border-radius: 5px;
         }
-        .close-btn:hover, .submit-btn:hover {
-            background-color: #007f9f; /* Azul piscina */
-        }
-        .orcamento-btn {
-            background-color: #007f9f; /* Azul piscina */
+
+        .whatsapp-btn {
+            background-color: #25d366;
             color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px;
         }
-        .orcamento-btn:hover {
-            background-color: #0099bb; /* Azul piscina claro */
-        }
+
         footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #555;
-        }
-        .titulo-destaque {
-            background-color: #007f9f; /* Azul piscina */
+            background-color: #00509e;
             color: white;
+            text-align: center;
             padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
+            margin-top: 20px;
         }
-        .descricao-plano {
-            text-align: left; /* Alinha a descrição à esquerda */
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
         }
-        img.logo {
-            width: 150px; /* Ajuste o tamanho da logo aqui */
-            margin: 10px 0; /* Espaço acima e abaixo da logo */
+
+        /* Estilos para a janela personalizada */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo da L B Info" style="width: 150px;">
         <h1>L B Info Soluções em TI</h1>
-        <p>Empresa especializada em manutenção de computadores e venda de software de automação comercial.</p>
-        <nav>
-            <a href="#servicos">Serviços</a>
-            <a href="#planos">Planos</a>
-            <a href="#contato">Contato</a>
-        </nav>
     </header>
-    
+
+    <nav>
+        <a href="#home" onclick="showSection('hero')">Home</a>
+        <a href="#servicos" onclick="showSection('servicos')">Serviços</a>
+        <a href="#planos" onclick="showSection('planos')">Planos</a>
+        <a href="#contato" onclick="showSection('contato')">Contato</a>
+    </nav>
+
+    <div class="hero active" id="hero">
+        <h2>Bem-vindo à L B Info Soluções em TI</h2>
+        <p>Soluções completas para o seu negócio.</p>
+    </div>
+
     <div class="container">
+        <!-- Seção Serviços -->
         <section id="servicos">
-            <h2><strong>Serviços prestados:</strong></h2>
-            <div class="servico" onclick="abrirModal('manutencao')">
+            <h2>Nossos Serviços</h2>
+            <div class="servico" onclick="openModal('Manutenção de Computadores')">
                 <h3>Manutenção de Computadores</h3>
+                <p>Realizamos manutenção preventiva e corretiva para garantir o bom funcionamento de seu computador.</p>
             </div>
-            <div class="servico" onclick="abrirModal('revenda')">
+            <div class="servico" onclick="openModal('Revenda de Software de Automação Comercial')">
                 <h3>Revenda de Software de Automação Comercial</h3>
+                <p>Oferecemos softwares para otimizar a gestão do seu negócio com eficiência.</p>
             </div>
-            <div class="servico" onclick="abrirModal('montagem')">
-                <h3>Montagem e manutenção de PC Gamer</h3>
+            <div class="servico" onclick="openModal('Montagem de PC Gamer')">
+                <h3>Montagem de PC Gamer</h3>
+                <p>Montamos PCs de alta performance conforme suas necessidades.</p>
             </div>
-            <div class="servico" onclick="abrirModal('notebooks')">
+            <div class="servico" onclick="openModal('Manutenção de Notebooks')">
                 <h3>Manutenção de Notebooks</h3>
-            </div>
-            <div class="servico" onclick="abrirModal('suporte')">
-                <h3>Suporte via Acesso Remoto</h3>
-            </div>
-            <div class="servico" onclick="abrirModal('clonagem')">
-                <h3>Clonagem, Formatação e Backup</h3>
+                <p>Realizamos manutenção completa de notebooks, desde a limpeza interna até a troca de componentes.</p>
             </div>
         </section>
 
+        <!-- Seção Planos -->
         <section id="planos">
-            <h2><strong>Planos de automação comercial:</strong></h2>
-            <div class="plano" onclick="abrirModal('standard')">
+            <h2>Nossos Planos</h2>
+            <div class="plano" onclick="openModal('Plano Standard')">
                 <h3>Plano Standard</h3>
-                <span class="valor">R$ 289,99/mês</span>
+                <p>• Gerenciamento de até 3 computadores<br>• Instalação e treinamento<br>• Suporte remoto e manutenção mensal<br>• Formatação e backup<br><strong>Atualização mensal inclusa</strong></p>
             </div>
-            <div class="plano" onclick="abrirModal('essencial')">
+            <div class="plano" onclick="openModal('Plano Essencial')">
                 <h3>Plano Essencial</h3>
-                <span class="valor">R$ 389,90/mês</span>
+                <p>• Gerenciamento de até 5 computadores<br>• Instalação, treinamento e suporte remoto<br>• Envio mensal de arquivos para contabilidade<br>• Manutenção mensal e formatação<br><strong>Atualização mensal inclusa</strong></p>
             </div>
         </section>
 
+        <!-- Seção Contato -->
         <section id="contato">
-            <h2><strong>Contato:</strong></h2>
-            <p><strong>Entre em contato com um especialista:</strong></p>
-            <button class="orcamento-btn" onclick="abrirOrcamento()">Faça um orçamento</button>
+            <h2>Entre em Contato</h2>
+            <p>Gostaria de falar com um especialista? Insira seu nome abaixo:</p>
+            <input type="text" id="nomeCliente" placeholder="Seu nome">
+            <button class="whatsapp-btn" onclick="enviarParaWhatsApp()">Entre em Contato via WhatsApp</button>
         </section>
+    </div>
+
+    <!-- Janela Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Solicitação de Orçamento</h3>
+            <p id="modalDescription"></p>
+            <input type="text" id="modalName" placeholder="Seu nome">
+            <button class="whatsapp-btn" onclick="sendWhatsAppFromModal()">Enviar via WhatsApp</button>
+        </div>
     </div>
 
     <footer>
-        <p>Todos os direitos reservados.</p>
+        <p>Siga-nos nas redes sociais:</p>
+        <a href="https://www.facebook.com/share/zYB8BAmXgCcRV8LF/" target="_blank">Facebook</a> |
+        <a href="https://www.instagram.com/l.b_info_solucoes/profilecard/?igsh=Y2o3aTN1dTFvN251" target="_blank">Instagram</a>
+        <p>&copy; 2024 L B Info Soluções em TI. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Modal para serviços -->
-    <div id="servicoModal" class="modal">
-        <div class="modal-content">
-            <h3 id="tituloServico"></h3>
-            <p id="descricaoServico"></p>
-            <button class="submit-btn" onclick="abrirOrcamento()">Solicitar Orçamento</button>
-            <button class="close-btn" onclick="fecharModal()">Fechar</button>
-        </div>
-    </div>
-
-    <!-- Modal para orçamento -->
-    <div id="orcamentoModal" class="modal">
-        <div class="modal-content">
-            <h3>Gostaria de iniciar uma conversa com um especialista?</h3>
-            <p>Insira seu nome para continuar:</p>
-            <input type="text" id="nomeCliente" placeholder="Seu nome">
-            <br>
-            <button class="submit-btn" onclick="enviarOrcamento()">Enviar para WhatsApp</button>
-            <button class="close-btn" onclick="fecharModal()">Fechar</button>
-        </div>
-    </div>
-
     <script>
-        // Abrir modal ao clicar em um serviço ou plano
-        function abrirModal(tipo) {
-            let titulo = '';
-            let descricao = '';
-
-            switch (tipo) {
-                case 'manutencao':
-                    titulo = 'Manutenção de Computadores';
-                    descricao = 'Garantimos que seu computador funcione de forma eficiente, realizando manutenção preventiva e corretiva.';
-                    break;
-                case 'revenda':
-                    titulo = 'Revenda de Software de Automação Comercial';
-                    descricao = 'Oferecemos soluções que ajudam seu negócio a operar de forma mais eficiente e organizada.';
-                    break;
-                case 'montagem':
-                    titulo = 'Montagem de PC Gamer';
-                    descricao = 'Montamos computadores de alta performance sob medida para suas necessidades de jogos.';
-                    break;
-                case 'notebooks':
-                    titulo = 'Manutenção de Notebooks';
-                    descricao = 'Cuidamos da saúde do seu notebook, desde limpeza interna até atualização de hardware.';
-                    break;
-                case 'suporte':
-                    titulo = 'Suporte via Acesso Remoto';
-                    descricao = 'Resolvemos problemas rapidamente, conectando-nos ao seu dispositivo de forma segura.';
-                    break;
-                case 'clonagem':
-                                   titulo = 'Clonagem, Formatação e Backup';
-                descricao = 'Realizamos clonagem de discos e backups para garantir que seus dados estejam sempre seguros.';
-                break;
-                case 'standard':
-                    titulo = 'Plano Standard';
-                    descricao = '• Gerenciamento de até 3 computadores<br>• Instalação<br>• Treinamento<br>• Suporte por acesso remoto<br>• Manutenção de computador mensal<br>• Formatação e backup';
-                    break;
-                case 'essencial':
-                    titulo = 'Plano Essencial';
-                    descricao = '• Gerenciamento de até 5 computadores<br>• Instalação<br>• Treinamento<br>• Suporte por acesso remoto<br>• Manutenção de computador mensal<br>• Envio mensal de arquivos para contabilidade<br>• Formatação e backup';
-                    break;
-            }
-
-            document.getElementById('tituloServico').innerText = titulo;
-            document.getElementById('descricaoServico').innerHTML = descricao;
-            document.getElementById('servicoModal').style.display = 'block';
+        // Função para mostrar seções
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section, .hero');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
         }
 
-        // Fechar modal
-        function fecharModal() {
-            document.getElementById('servicoModal').style.display = 'none';
-            document.getElementById('orcamentoModal').style.display = 'none';
+        // Função para abrir a janela modal
+        function openModal(servicoOuPlano) {
+            document.getElementById('modalTitle').innerText = `Solicitação de Orçamento para ${servicoOuPlano}`;
+            document.getElementById('modalDescription').innerText = "Estamos prontos para ajudar com suas necessidades de " + servicoOuPlano + ". Por favor, forneça seu nome para entrarmos em contato.";
+            document.getElementById('modal').style.display = "block";
         }
 
-        // Abrir modal de orçamento
-        function abrirOrcamento() {
-            document.getElementById('orcamentoModal').style.display = 'block';
+        // Função para fechar a janela modal
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
         }
 
-        // Enviar orçamento pelo WhatsApp
-        function enviarOrcamento() {
+        // Função para enviar mensagem via WhatsApp
+        function enviarParaWhatsApp() {
             const nome = document.getElementById('nomeCliente').value;
-            if (nome) {
-                const mensagem = `Olá, meu nome é ${nome}. Gostaria de solicitar um orçamento.`;
-                const whatsappNumber = '+5522997599241'; // Número do WhatsApp
-                const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(mensagem)}`;
-                window.open(url);
-                fecharModal();
-            } else {
-                alert('Por favor, insira seu nome para continuar.');
-            }
+            const message = `Olá, meu nome é ${nome} e gostaria de saber mais sobre os serviços.`;
+            const phoneNumber = '+5522997599241'; // Seu número de WhatsApp
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        // Função para enviar mensagem do modal via WhatsApp
+        function sendWhatsAppFromModal() {
+            const nome = document.getElementById('modalName').value;
+            const serviceName = document.getElementById('modalTitle').innerText.replace('Solicitação de Orçamento para ', '');
+            const message = `Olá, meu nome é ${nome} e estou interessado em ${serviceName}.`;
+            const phoneNumber = '+5522997599241'; // Seu número de WhatsApp
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>
 </html>
-
