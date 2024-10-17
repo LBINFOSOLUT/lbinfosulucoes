@@ -20,9 +20,9 @@
         }
 
         header h1 {
-            font-size: 2.5em; /* Tamanho aumentado do título */
-            font-family: 'Georgia', serif; /* Fonte mais profissional */
-            margin: 0; /* Remove margem padrão */
+            font-size: 2.5em;
+            font-family: 'Georgia', serif;
+            margin: 0;
         }
 
         nav {
@@ -37,46 +37,40 @@
             text-decoration: none;
             text-align: center;
             font-weight: bold;
+            transition: background-color 0.3s;
         }
 
         nav a:hover {
-            background-color: #0073e6;
+            background-color: #d4af37;
+            color: #fff0d1; /* Cor creme puxado para dourado */
         }
 
         .hero {
             background-image: url('https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_960_720.jpg');
             background-size: cover;
             background-position: center;
-            height: 100vh; /* Preenche toda a altura da tela */
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
-            flex-direction: column; /* Alinha texto verticalmente */
-            padding-top: 100px; /* Espaçamento acima do título */
+            flex-direction: column;
+            padding-top: 80px; /* Ajuste para subir o conteúdo */
         }
 
         .hero h2 {
-            font-size: 2em; /* Tamanho do título centralizado */
-            margin: 0; /* Remove margem padrão */
+            font-size: 2em;
+            margin: 0;
         }
 
         .hero p {
-            font-size: 1.2em; /* Tamanho do subtítulo */
-            margin-top: 10px; /* Espaçamento acima do subtítulo */
+            font-size: 1.2em;
+            margin-top: 10px;
         }
 
         .container {
             padding: 20px;
-        }
-
-        section {
-            display: none;
-        }
-
-        .active {
-            display: block;
         }
 
         .servico, .plano {
@@ -86,16 +80,12 @@
             padding: 20px;
             border-radius: 5px;
             cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
-        .whatsapp-btn {
-            background-color: #25d366;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
+        .servico:hover, .plano:hover {
+            transform: scale(1.05); /* Efeito de movimento ao passar o mouse */
+            background-color: #d4af37; /* Cor creme puxado para dourado */
         }
 
         footer {
@@ -106,13 +96,6 @@
             margin-top: 20px;
         }
 
-        input[type="text"] {
-            padding: 10px;
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Estilos para a janela personalizada */
         .modal {
             display: none;
             position: fixed;
@@ -122,9 +105,9 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0.6);
             padding-top: 60px;
+            transition: all 0.5s ease;
         }
 
         .modal-content {
@@ -135,7 +118,13 @@
             width: 80%;
             max-width: 500px;
             border-radius: 8px;
+            animation: modalFadeIn 0.5s;
             text-align: center;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .close {
@@ -151,6 +140,28 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-btn {
+            background-color: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #d4af37;
+            color: #fff0d1;
+        }
+
     </style>
 </head>
 <body>
@@ -175,43 +186,35 @@
         <!-- Seção Serviços -->
         <section id="servicos">
             <h2>Nossos Serviços</h2>
-            <div class="servico" onclick="openModal('Manutenção de Computadores')">
+            <div class="servico" onclick="openModal('Manutenção de Computadores', 'Realizamos manutenção preventiva e corretiva para garantir o bom funcionamento de seu computador.')">
                 <h3>Manutenção de Computadores</h3>
-                <p>Realizamos manutenção preventiva e corretiva para garantir o bom funcionamento de seu computador.</p>
+                <p>Manutenção preventiva e corretiva.</p>
             </div>
-            <div class="servico" onclick="openModal('Revenda de Software de Automação Comercial')">
+            <div class="servico" onclick="openModal('Revenda de Software de Automação Comercial', 'Oferecemos softwares para otimizar a gestão do seu negócio com eficiência.')">
                 <h3>Revenda de Software de Automação Comercial</h3>
-                <p>Oferecemos softwares para otimizar a gestão do seu negócio com eficiência.</p>
+                <p>Soluções de software para automação comercial.</p>
             </div>
-            <div class="servico" onclick="openModal('Montagem de PC Gamer')">
+            <div class="servico" onclick="openModal('Montagem de PC Gamer', 'Montamos PCs de alta performance conforme suas necessidades.')">
                 <h3>Montagem de PC Gamer</h3>
-                <p>Montamos PCs de alta performance conforme suas necessidades.</p>
+                <p>PCs de alta performance para jogos.</p>
             </div>
-            <div class="servico" onclick="openModal('Manutenção de Notebooks')">
+            <div class="servico" onclick="openModal('Manutenção de Notebooks', 'Realizamos manutenção completa de notebooks, desde limpeza até a troca de componentes.')">
                 <h3>Manutenção de Notebooks</h3>
-                <p>Realizamos manutenção completa de notebooks, desde a limpeza interna até a troca de componentes.</p>
+                <p>Manutenção completa de notebooks.</p>
             </div>
         </section>
 
         <!-- Seção Planos -->
         <section id="planos">
             <h2>Nossos Planos</h2>
-            <div class="plano" onclick="openModal('Plano Standard')">
+            <div class="plano" onclick="openModal('Plano Standard', '• Gerenciamento de até 3 computadores\n• Instalação e treinamento\n• Emissão de NF-e/NFC-e\n• Controle de estoque e caixa\n• Suporte remoto e manutenção mensal\n• Atualização mensal inclusa')">
                 <h3>Plano Standard</h3>
-                <p>• Gerenciamento de até 3 computadores<br>• Instalação e treinamento<br>• Emissão de NF-e\ NFC-e<br>• Controle de estoque e caixa<br>• Suporte remoto e manutenção mensal<br><strong>Atualização mensal inclusa</strong></p>
+                <p>Plano básico de gerenciamento e suporte.</p>
             </div>
-            <div class="plano" onclick="openModal('Plano Essencial')">
+            <div class="plano" onclick="openModal('Plano Essencial', '• Gerenciamento de até 5 computadores\n• Instalação, treinamento e suporte remoto\n• Emissão de NF-e/NFC-e\n• Aplicativo de vendas\n• Controle de estoque e caixa\n• Manutenção mensal dos computadores\n• Envio mensal de arquivos para contabilidade\n• Formatação e backup\n• Atualização mensal inclusa')">
                 <h3>Plano Essencial</h3>
-                <p>• Gerenciamento de até 5 computadores<br>• Instalação, treinamento e suporte remoto<br>• Emissão de NF-e\ NFC-e<br>• aplicativo de vendas<br>• Controle de estoque e caixa<br>• Formatação e backup<br>• Envio mensal de arquivos para contabilidade<br>• Manutenção mensal dos computadores<br><strong>•Atualização mensal inclusa</strong></p>
+                <p>Plano completo com suporte avançado.</p>
             </div>
-        </section>
-
-        <!-- Seção Contato -->
-        <section id="contato">
-            <h2>Entre em Contato</h2>
-            <p>Gostaria de falar com um especialista? Insira seu nome abaixo:</p>
-            <input type="text" id="nomeCliente" placeholder="Seu nome">
-            <button class="whatsapp-btn" onclick="enviarParaWhatsApp()">Entre em Contato via WhatsApp</button>
         </section>
     </div>
 
@@ -230,46 +233,33 @@
         <p>Siga-nos nas redes sociais:</p>
         <a href="https://www.facebook.com/share/zYB8BAmXgCcRV8LF/" target="_blank">Facebook</a> |
         <a href="https://www.instagram.com/l.b_info_solucoes/profilecard/?igsh=Y2o3aTN1dTFvN251" target="_blank">Instagram</a>
-        <p>&copy; 2024 L B Info Soluções em TI - CNPJ: 57.437.354/0001-15. Todos os direitos reservados.</p>
+        <p>&copy; 2024 L B Info Soluções em TI - CNPJ: 57.437.354/0001-15. Todos os        direitos reservados.</p>
     </footer>
 
     <script>
         function showSection(sectionId) {
-            // Ocultar todas as seções
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
+            document.querySelectorAll('.container > section, .hero').forEach(section => {
+                section.style.display = 'none';
             });
-
-            // Mostrar a seção selecionada
-            document.getElementById(sectionId).classList.add('active');
+            document.getElementById(sectionId).style.display = 'block';
         }
 
-        function openModal(servico) {
-            document.getElementById('modalTitle').textContent = servico;
-            document.getElementById('modalDescription').textContent = "Você selecionou o serviço: " + servico + ". Insira seu nome para contato:";
+        function openModal(title, description) {
             document.getElementById('modal').style.display = 'block';
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
         }
 
         function closeModal() {
             document.getElementById('modal').style.display = 'none';
         }
 
-        function enviarParaWhatsApp() {
-            const nome = document.getElementById('nomeCliente').value;
-            const mensagem = `Olá! Meu nome é ${nome}. Gostaria de mais informações sobre os serviços.`;
-            const whatsappURL = `https://api.whatsapp.com/send?phone=+5522997599241&text=${encodeURIComponent(mensagem)}`;
-            window.open(whatsappURL, '_blank');
-        }
-
         function sendWhatsAppFromModal() {
             const nome = document.getElementById('modalName').value;
-            const servico = document.getElementById('modalTitle').textContent;
-            const mensagem = `Olá! Meu nome é ${nome}. Gostaria de mais informações sobre ${servico}.`;
-            const whatsappURL = `https://api.whatsapp.com/send?phone=+5522997599241&text=${encodeURIComponent(mensagem)}`;
-            window.open(whatsappURL, '_blank');
-            closeModal();
+            const message = encodeURIComponent(`Olá, meu nome é ${nome}. Gostaria de mais informações sobre o serviço.`);
+            window.open(`https://wa.me/5522997599241?text=${message}`, '_blank');
         }
     </script>
 </body>
 </html>
+
