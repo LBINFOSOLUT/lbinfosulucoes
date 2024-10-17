@@ -179,12 +179,11 @@
     <div class="hero active" id="hero">
         <h2>Bem-vindo à L B Info Soluções em TI</h2>
         <p>Soluções completas para o seu negócio.</p>
-        <p>Venda de sistema de automação comercial e manutenção de computadores.</p>
     </div>
 
     <div class="container">
         <!-- Seção Serviços -->
-        <section id="servicos">
+        <section id="servicos" style="display: none;"> <!-- Seção Serviços oculta por padrão -->
             <h2>Nossos Serviços</h2>
             <div class="servico" onclick="openModal('Manutenção de Computadores', 'Realizamos manutenção preventiva e corretiva para garantir o bom funcionamento de seu computador.')">
                 <h3>Manutenção de Computadores</h3>
@@ -205,61 +204,87 @@
         </section>
 
         <!-- Seção Planos -->
-        <section id="planos">
+        <section id="planos" style="display: none;"> <!-- Seção Planos oculta por padrão -->
             <h2>Nossos Planos</h2>
             <div class="plano" onclick="openModal('Plano Standard', '• Gerenciamento de até 3 computadores\n• Instalação e treinamento\n• Emissão de NF-e/NFC-e\n• Controle de estoque e caixa\n• Suporte remoto e manutenção mensal\n• Atualização mensal inclusa')">
                 <h3>Plano Standard</h3>
                 <p>Plano básico de gerenciamento e suporte.</p>
+           
             </div>
             <div class="plano" onclick="openModal('Plano Essencial', '• Gerenciamento de até 5 computadores\n• Instalação, treinamento e suporte remoto\n• Emissão de NF-e/NFC-e\n• Aplicativo de vendas\n• Controle de estoque e caixa\n• Manutenção mensal dos computadores\n• Envio mensal de arquivos para contabilidade\n• Formatação e backup\n• Atualização mensal inclusa')">
                 <h3>Plano Essencial</h3>
-                <p>Plano completo com suporte avançado.</p>
+                <p>Todos os recursos do Plano Standard com aplicativo de vendas.</p>
             </div>
+        </section>
+
+        <!-- Seção Contato -->
+        <section id="contato" style="display: none;">
+            <h2>Contato</h2>
+            <p>Entre em contato conosco pelo WhatsApp!</p>
+            <button class="whatsapp-btn" onclick="openWhatsApp()">Fale Conosco</button>
         </section>
     </div>
 
-    <!-- Janela Modal -->
-    <div id="modal" class="modal">
+    <!-- Modal -->
+    <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h3 id="modalTitle">Solicitação de Orçamento</h3>
-            <p id="modalDescription"></p>
-            <input type="text" id="modalName" placeholder="Seu nome">
-            <button class="whatsapp-btn" onclick="sendWhatsAppFromModal()">Enviar via WhatsApp</button>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+            <input type="text" id="customer-name" placeholder="Digite seu nome" required>
+            <button class="whatsapp-btn" onclick="redirectToWhatsApp()">Enviar pelo WhatsApp</button>
         </div>
     </div>
-
     <footer>
         <p>Siga-nos nas redes sociais:</p>
         <a href="https://www.facebook.com/share/zYB8BAmXgCcRV8LF/" target="_blank">Facebook</a> |
-        <a href="https://www.instagram.com/l.b_info_solucoes/profilecard/?igsh=Y2o3aTN1dTFvN251" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/l.b_info_solucoes?igsh=eHFsb3I1Y25ubDF0" target="_blank">Instagram</a>
         <p>&copy; 2024 L B Info Soluções em TI - CNPJ: 57.437.354/0001-15. Todos os        direitos reservados.</p>
     </footer>
-
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.container > section, .hero').forEach(section => {
-                section.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-        }
-
         function openModal(title, description) {
-            document.getElementById('modal').style.display = 'block';
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('modal-title').innerText = title; // Define o título do modal
+            document.getElementById('modal-description').innerText = description; // Define a descrição do modal
+            document.getElementById('myModal').style.display = 'block'; // Mostra o modal
         }
 
         function closeModal() {
-            document.getElementById('modal').style.display = 'none';
+            document.getElementById('myModal').style.display = 'none'; // Esconde o modal
         }
 
-        function sendWhatsAppFromModal() {
-            const nome = document.getElementById('modalName').value;
-            const message = encodeURIComponent(`Olá, meu nome é ${nome}. Gostaria de mais informações sobre o serviço.`);
-            window.open(`https://wa.me/5522997599241?text=${message}`, '_blank');
+        function openWhatsApp() {
+            const name = document.getElementById('customer-name').value; // Captura o nome
+            const phone = '+5522997599241'; // Número de WhatsApp da empresa
+            const message = `Olá, meu nome é ${name}. Estou interessado em saber mais sobre os serviços.`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank'); // Redireciona para o WhatsApp
         }
+
+        function redirectToWhatsApp() {
+            const name = document.getElementById('customer-name').value; // Captura o nome do cliente
+            const phone = '+5522997599241'; // Número de WhatsApp da empresa
+            const message = `Olá, meu nome é ${name}. Estou interessado em saber mais sobre ${document.getElementById('modal-title').innerText}.`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank'); // Redireciona para o WhatsApp
+            closeModal(); // Fecha o modal
+        }
+
+        // Função para alternar entre as seções
+        function showSection(sectionId) {
+            // Ocultar todas as seções
+            document.querySelectorAll('.container > section, .hero').forEach(section => {
+                section.style.display = 'none';  // Esconde todas as seções
+            });
+            
+            // Exibir a seção correspondente ao menu clicado
+            const sectionToShow = document.getElementById(sectionId);
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';  // Mostra a seção desejada
+            }
+        }
+
+        // Inicializa a exibição da seção 'hero' na carga da página
+        window.onload = function() {
+            showSection('hero'); // Mostra a seção hero por padrão
+        };
     </script>
 </body>
 </html>
-
